@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.env
+*.log
+# Downloaded and recorded data never goes in Git
+data/*
+!data/README.md
+config/local.toml
