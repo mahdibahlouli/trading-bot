@@ -1,0 +1,49 @@
+# Default settings. Copy to config/local.toml (ignored by Git) to override any value.
+
+data_dir = "data"
+
+[dukascopy]
+# Price divisor per instrument: raw integer / divisor = price. [verify] for new symbols.
+point_divisors = { XAUUSD = 1000, XAGUSD = 1000, EURUSD = 100000, GBPUSD = 100000, USDJPY = 1000 }
+workers = 4
+
+[binance]
+market = "futures_um"   # "spot", "futures_um" or "futures_cm"
+symbols = ["BTCUSDT", "ETHUSDT"]
+
+[hyperliquid]
+api_url = "https://api.hyperliquid.xyz/info"
+ws_url = "wss://api.hyperliquid.xyz/ws"
+leaderboard_url = "https://stats-data.hyperliquid.xyz/Mainnet/leaderboard"
+coins = ["BTC", "ETH", "SOL", "HYPE", "XRP", "DOGE"]
+# Polling intervals (seconds)
+asset_ctx_interval = 60
+positions_interval = 300
+leaderboard_refresh = 21600
+# How many leaderboard addresses to snapshot each positions cycle
+top_addresses = 300
+# How many of those to also stream live fills for (fills carry liquidation info)
+fill_stream_addresses = 50
+# Extra addresses you always want tracked
+extra_addresses = []
+# Share of Hyperliquid's 1200 weight/minute IP budget the recorder may use
+max_weight_per_minute = 600
+flush_seconds = 300
+
+[ict]
+timezone = "America/New_York"
+# Trading day starts at this NY hour (18 = futures open, 0 = midnight)
+day_start_hour = 18
+atr_period = 14
+swing_n = 3
+sweep_min_atr = 0.1
+sweep_bars = 3
+fvg_min_atr = 0.0
+fvg_ttl = 60
+
+[ict.sessions]
+# name = [start "HH:MM", end "HH:MM"] in New York time, end exclusive
+asia = ["20:00", "00:00"]
+london_kz = ["02:00", "05:00"]
+ny_am_kz = ["07:00", "10:00"]
+ny_pm = ["13:30", "16:00"]
